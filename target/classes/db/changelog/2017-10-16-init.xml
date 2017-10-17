@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	<changeSet id="utf8" author="whoknows" dbms="mysql">
+		<sql>
+			ALTER DATABASE sb_multiple_ds_db1 CHARACTER SET utf8 COLLATE utf8_general_ci;
+		</sql>
+	</changeSet>
+	<changeSet author="wanli zhou" id="1">
+		<createTable tableName="province">
+			<column autoIncrement="true" name="id" type="bigint">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="province_id_pk"/>
+			</column>
+			<column name="code" type="varchar(6)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="name" type="varchar(40)">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="wanli zhou" id="2">
+		<createTable tableName="city">
+			<column autoIncrement="true" name="id" type="bigint">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="city_id_pk"/>
+			</column>
+			<column name="code" type="varchar(15)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="name" type="varchar(15)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="province_id" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="wanli zhou" id="3">
+		<createTable tableName="county">
+			<column autoIncrement="true" name="id" type="bigint">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="county_id_pk"/>
+			</column>
+			<column name="code" type="varchar(15)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="name" type="varchar(15)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="city_id" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="init-province" author="4">
+		<sql>
+			INSERT INTO `province` VALUES (1, '110000', '北京市');
+			INSERT INTO `province` VALUES (2, '120000', '天津市');
+			INSERT INTO `province` VALUES (3, '130000', '河北省');
+
+			INSERT INTO `city` VALUES ('1', '110100', '北京市', 1);
+			INSERT INTO `city` VALUES ('2', '1102xx', '北京下属县', 1);
+			INSERT INTO `city` VALUES ('3', '120100', '天津市', 2);
+			INSERT INTO `city` VALUES ('4', '1202xx', '天津下属县', 2);
+
+			INSERT INTO `county` VALUES ('1', '110101', '东城区', 1);
+			INSERT INTO `county` VALUES ('2', '110102', '西城区', 1);
+			INSERT INTO `county` VALUES ('3', '110103', '崇文区', 1);
+			INSERT INTO `county` VALUES ('4', '110104', '宣武区', 1);
+			INSERT INTO `county` VALUES ('5', '110105', '朝阳区', 1);
+			INSERT INTO `county` VALUES ('6', '110106', '丰台区', 1);
+			INSERT INTO `county` VALUES ('7', '110107', '石景山区', 1);
+			INSERT INTO `county` VALUES ('8', '110108', '海淀区', 1);
+			INSERT INTO `county` VALUES ('9', '110109', '门头沟区', 1);
+			INSERT INTO `county` VALUES ('10', '110111', '房山区', 1);
+			INSERT INTO `county` VALUES ('11', '110112', '通州区', 1);
+			INSERT INTO `county` VALUES ('12', '110113', '顺义区', 1);
+			INSERT INTO `county` VALUES ('13', '110114', '昌平区', 1);
+			INSERT INTO `county` VALUES ('14', '110115', '大兴区', 1);
+			INSERT INTO `county` VALUES ('15', '110116', '怀柔区', 1);
+			INSERT INTO `county` VALUES ('16', '110117', '平谷区', 1);
+			INSERT INTO `county` VALUES ('17', '110228', '密云县', 1);
+			INSERT INTO `county` VALUES ('18', '110229', '延庆县', 1);
+			INSERT INTO `county` VALUES ('19', '120101', '和平区', 2);
+			INSERT INTO `county` VALUES ('20', '120102', '河东区', 2);
+			INSERT INTO `county` VALUES ('21', '120103', '河西区', 2);
+			INSERT INTO `county` VALUES ('22', '120104', '南开区', 2);
+			INSERT INTO `county` VALUES ('23', '120105', '河北区', 2);
+			INSERT INTO `county` VALUES ('24', '120106', '红桥区', 2);
+			INSERT INTO `county` VALUES ('25', '120107', '塘沽区', 2);
+			INSERT INTO `county` VALUES ('26', '120108', '汉沽区', 2);
+			INSERT INTO `county` VALUES ('27', '120109', '大港区', 2);
+			INSERT INTO `county` VALUES ('28', '120110', '东丽区', 2);
+			INSERT INTO `county` VALUES ('29', '120111', '西青区', 2);
+			INSERT INTO `county` VALUES ('30', '120112', '津南区', 2);
+		</sql>
+	</changeSet>
+</databaseChangeLog>

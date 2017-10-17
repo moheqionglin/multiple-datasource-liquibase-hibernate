@@ -1,0 +1,11 @@
+com/hibernate/demo/PersistentUnitConfig.class
+com/hibernate/demo/LiquibaseConfig.class
+com/hibernate/demo/controller2/ClassesService.class
+com/hibernate/demo/controller2/ClassesController.class
+com/hibernate/demo/domain/Province.class
+com/hibernate/demo/controller/AddressController.class
+com/hibernate/demo/domain/City.class
+com/hibernate/demo/domain/County.class
+com/hibernate/demo/controller/AddressService.class
+com/hibernate/demo/DemoApplication.class
+com/hibernate/demo/domain2/Classes.class

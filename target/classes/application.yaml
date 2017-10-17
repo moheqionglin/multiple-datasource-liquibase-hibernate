@@ -1,0 +1,67 @@
+server:
+    port: 13003
+    servlet-path: /spring
+
+multiple:
+    datasource:
+        ds1:
+            url: jdbc:mysql://127.0.0.1:3306/sb_multiple_ds_db1?characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
+            username: root
+            password:
+            driver: com.mysql.jdbc.Driver
+            test-on-borrow: true
+            test-while-idle: true
+            validation-query: SELECT 1;
+            maxActive: 1
+            maxIdle: 20
+            minIdle: 15
+            initialSize: 1
+            liquibase:
+                changeLog: "classpath:db/changelog/master.xml"
+                defaultSchema: "sb_multiple_ds_db1"
+                dropFirst: false
+        ds2:
+            url: jdbc:mysql://127.0.0.1:3306/sb_multiple_ds_db2?characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
+            username: root
+            password:
+            driver: com.mysql.jdbc.Driver
+            test-on-borrow: true
+            test-while-idle: true
+            validation-query: SELECT 1;
+            maxActive: 1
+            maxIdle: 20
+            minIdle: 15
+            initialSize: 1
+            liquibase:
+                changeLog: "classpath:db/changelog2/master.xml"
+                defaultSchema: "sb_multiple_ds_db2"
+                dropFirst: false
+
+
+
+spring:
+    datasource:
+        tomcat:
+            test-on-borrow: true
+            validation-query: SELECT 1
+            max-active: 50
+            max-idle: 20
+            min-idle: 15
+            initial-size: 1
+#    jpa:
+#        hibernate:
+#            ddl-auto: none
+#            dialect: org.hibernate.dialect.MySQLDialect
+#            naming:
+#                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#            format_sql: true
+
+
+
+
+logging:
+    level:
+        com.hibernate.demo: DEBUG
+        org.hibernate.SQL: DEBUG
+
+                
