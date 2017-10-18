@@ -5,7 +5,6 @@ import com.hibernate.demo.domain.County;
 import com.hibernate.demo.domain.Province;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import javax.xml.bind.Marshaller;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
