@@ -25,7 +25,7 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-
+    //http://localhost:13003/spring/address/province/id/1
     @GetMapping("province/id/{id}")
     public ResponseEntity getProvinceById(@PathVariable("id") Integer id){
         Province pi = addressService.getProvinceById(id);

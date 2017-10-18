@@ -48,8 +48,6 @@ spring:
             max-idle: 20
             min-idle: 15
             initial-size: 1
-    profiles:
-      active: profile1
 #    jpa:
 #        hibernate:
 #            ddl-auto: none

@@ -23,7 +23,7 @@ public class ClassesController {
         this.classesService = classesService;
     }
 
-
+    //localhost:13003/spring/classes/id/1
     @GetMapping("/id/{id}")
     public ResponseEntity getClassesById(@PathVariable("id") Integer id){
         Classes cs = classesService.getClassesById(id);
